@@ -1,0 +1,5 @@
+scripts/browser-check.js
+output/
+dist/
+public/exercises/
+MOVEWELL_CODEX_SPEC.md

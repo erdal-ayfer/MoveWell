@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "Workrave",
+    "url": "https://github.com/rcaelers/workrave",
+    "revision": "73a2c966f9ed564aab81e76937a1b7d08b4e0e35",
+    "license": "GPL-3.0",
+    "licensePath": "/exercises/workrave/COPYING",
+    "creditTr": "Görseller: Workrave katkıcıları · GNU GPL v3"
+  },
+  "exercises": [
+    {
+      "id": "finger-stretch",
+      "titleTr": "Parmaklarını aç ve gevşet",
+      "categoryTr": "El ve bilek",
+      "defaultEnabled": true,
+      "durationSeconds": 30,
+      "animationKind": "frame-sequence",
+      "animationLabelTr": "İki aşamalı hareket gösterimi",
+      "frames": [
+        "/exercises/workrave/finger-stretch-1.png",
+        "/exercises/workrave/finger-stretch-2.png"
+      ],
+      "sequence": [
+        {
+          "frame": 0,
+          "durationMs": 4000
+        },
+        {
+          "frame": 1,
+          "durationMs": 4000
+        }
+      ],
+      "instructionTr": "Ellerini önüne uzat. Parmaklarını rahatça aç; ardından parmak eklemlerinden nazikçe büküp gevşet. Hareketi yavaşça tekrarla.",
+      "cautionTr": "Parmaklarını zorlayarak germe. Ağrı veya uyuşma hissedersen dur."
+    },
+    {
+      "id": "near-far-focus",
+      "titleTr": "Bakışını uzağa taşı",
+      "categoryTr": "Göz molası",
+      "defaultEnabled": true,
+      "durationSeconds": 30,
+      "animationKind": "frame-sequence",
+      "animationLabelTr": "Yakın ve uzak odağı gösteren iki kare",
+      "frames": [
+        "/exercises/workrave/depth-focus-1.png",
+        "/exercises/workrave/depth-focus-2.png"
+      ],
+      "sequence": [
+        {
+          "frame": 0,
+          "durationMs": 5000
+        },
+        {
+          "frame": 1,
+          "durationMs": 5000
+        }
+      ],
+      "instructionTr": "Ekrandan başını kaldır ve odada uzakta duran bir noktaya bak. Sonra yakındaki bir nesneye bak. Bakışını rahat bir tempoda değiştir; normal şekilde göz kırp.",
+      "cautionTr": "Gözlerini kısma veya odaklanmak için zorlama. Rahatsızlık hissedersen gözlerini dinlendir."
+    }
+  ]
+}
