@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Pause, Play, RotateCcw } from 'lucide-react'
 import type { Exercise } from '../data/exercises'
+import { assetUrl } from '../lib/assets'
 
 const frames: Record<string, string[]> = {
   fingers: ['/exercises/workrave/finger-stretch-1.png', '/exercises/workrave/finger-stretch-2.png'],
@@ -51,7 +52,7 @@ export function ExerciseDemo({
             {media.map((src, i) => (
               <img
                 key={src}
-                src={src}
+                src={assetUrl(src)}
                 alt=""
                 aria-hidden="true"
                 className={

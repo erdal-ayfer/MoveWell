@@ -89,7 +89,26 @@ Her hareketin yazılı yönergesi ve gerektiğinde kısa dikkat notu bulunur. Si
 
 MoveWell tıbbi bir ürün değildir. Hareketler isteğe bağlıdır; ağrı veya rahatsızlık varsa dur. Yoğun egzersiz, zorlayıcı boyun döndürme ve nefes tutma yönergesi içermez.
 
-## GitHub ve daha sonra Vercel
+## GitHub Pages yayını
+
+Site adresi: **https://erdal-ayfer.github.io/MoveWell/**
+
+`.github/workflows/pages.yml`, `main` dalına yapılan her push için Node.js 24 ile bağımlılıkları kurar, lint/test kontrollerini çalıştırır, uygulamayı derler ve GitHub Pages'e dağıtır. GitHub deposunda **Settings → Pages → Source: GitHub Actions** kullanılır. Ana kullanıcı sitesinin dosyaları değiştirilmez.
+
+Yayın derlemesinde `DEPLOY_BASE_PATH=/MoveWell/` ayarlanır. JavaScript, CSS, hareket görselleri ve bildirim ikonu bu taban yolu altında yüklenir. Yerel geliştirme ve normal `npm run build` için varsayılan yol `/` kalır.
+
+Alt dizin derlemesini PowerShell'de yerel olarak denemek için:
+
+```powershell
+$env:DEPLOY_BASE_PATH = '/MoveWell/'
+npm run build
+npm run preview -- --port 4173
+# http://127.0.0.1:4173/MoveWell/
+```
+
+Normal kök dizin derlemesine dönmek için `Remove-Item Env:DEPLOY_BASE_PATH` kullan. Canlı sitenin tarayıcı kayıtları localhost kayıtlarından ayrıdır; bildirim izni canlı alan adında yeniden verilir.
+
+## Kaynak depo ve alternatif Vercel kurulumu
 
 Depo: https://github.com/erdal-ayfer/MoveWell
 
@@ -100,7 +119,7 @@ npm ci
 npm run build
 ```
 
-Bu teslim GitHub ile sınırlıdır; Vercel dağıtımı yapılmaz. Daha sonra Vercel'de **Add New → Project** üzerinden GitHub deposunu seç:
+Vercel kullanmak istersen **Add New → Project** üzerinden GitHub deposunu seç:
 
 - Framework: **Vite**
 - Install command: `npm ci`

@@ -1,4 +1,5 @@
 import type { State } from './model'
+import { assetUrl } from './assets'
 
 let soundContext: AudioContext | null = null
 let currentNotification: Notification | null = null
@@ -40,7 +41,7 @@ export function notify(sound: boolean) {
       currentNotification = new Notification('MoveWell · Kısa bir mola?', {
         body: 'Hazırsan biraz hareket et. Meşgulsen molanı erteleyebilirsin.',
         tag: 'movewell-break',
-        icon: '/favicon.svg',
+        icon: assetUrl('favicon.svg'),
       })
       currentNotification.onclick = () => {
         window.focus()
