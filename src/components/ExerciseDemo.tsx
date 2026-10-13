@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Pause, Play, RotateCcw } from 'lucide-react'
 import type { Exercise } from '../data/exercises'
 import { assetUrl } from '../lib/assets'
+import { AdditionalMotion, additionalMotionIds } from './AdditionalMotion'
 
 const frames: Record<string, string[]> = {
   fingers: ['/exercises/workrave/finger-stretch-1.png', '/exercises/workrave/finger-stretch-2.png'],
@@ -130,7 +131,9 @@ function MotionDrawing({ id, title }: { id: string; title: string }) {
     >
       <title>{title}</title>
       <path d="M65 286H335" className="ground" />
-      {id === 'wrist' ? (
+      {additionalMotionIds.includes(id) ? (
+        <AdditionalMotion id={id} />
+      ) : id === 'wrist' ? (
         <>
           <path d="M62 188H222" className="body-stroke" />
           <path d="M62 212H212" className="support-stroke" />

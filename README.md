@@ -30,17 +30,19 @@ npx --yes --package @playwright/cli playwright-cli -s=movewell-qa run-code --fil
 npx --yes --package @playwright/cli playwright-cli -s=movewell-qa close
 ```
 
-Bu komutlar ayrı bir test tarayıcı oturumu kullanır ve o oturumun MoveWell verilerini sıfırlar. Tarayıcı saati hızlandırılır; yerel bildirim arayüzü test taklidiyle değiştirilir. Gerçek işletim sistemi bildirim teslimi otomatik test tarafından doğrulanmaz. Test, hatırlatma/erteleme, kısmi/tam mola, yenileme, 12 gösterimin gerçek kare/uzuv değişimi, azaltılmış hareket ve mobil taşma kontrolünü kapsar. Çoklu sekmede tek bildirim ve lider devri ayrıca Chrome'da doğrulanmıştır.
+Bu komutlar ayrı bir test tarayıcı oturumu kullanır ve o oturumun MoveWell verilerini sıfırlar. Tarayıcı saati hızlandırılır; yerel bildirim arayüzü test taklidiyle değiştirilir. Gerçek işletim sistemi bildirim teslimi otomatik test tarafından doğrulanmaz. Test, hatırlatma/erteleme, kısmi/tam mola, yenileme, 24 gösterimin gerçek kare/uzuv değişimi, azaltılmış hareket ve mobil taşma kontrolünü kapsar. Çoklu sekmede tek bildirim ve lider devri ayrıca Chrome'da doğrulanmıştır.
 
 ## Kullanım
 
 - **Bugün:** iş gününü başlat/bitir, geri sayımı gör, hemen mola ver, odaklan veya duraklat.
 - **Mola ekranı:** hareket gösterimi, kısa Türkçe yönergeler, süre seçimi, oynat/duraklat, önceki/sonraki, hareket değiştirme ve erken bitirme.
-- **Hareketler:** 12 hafif hareket. Gösterimi açabilir ve istemediğin hareketleri mola listelerinden çıkarabilirsin. En az bir hareket açık kalır.
+- **Hareketler:** 5 kategoride 24 hafif hareket (ayakta, oturarak, omuz ve sırt, el ve bilek, göz molası). Gösterimi açabilir ve istemediğin hareketleri mola listelerinden çıkarabilirsin. En az bir hareket açık kalır.
 - **Geçmiş:** tamamlanan, kısmi ve atlanan molalar ayrı gösterilir. Son yedi günün toplam hareket süresi gerçek kayıtlardan hesaplanır.
 - **Ayarlar:** 30/45/60/90 dakika çalışma aralığı, 2/3/5 dakika mola, tema, isteğe bağlı ses/bildirim, ertesi gün otomatik başlatma ve JSON veri indirme.
 
 ## Zamanlama kuralları
+
+Mola listeleri kategorileri sırayla dolaşır ve yeterli açık hareket varsa aynı mola içinde bir hareketi tekrar etmez. Daha az seçenek açık olduğunda süreyi tamamlamak için tekrar edilir; en az iki seçenek varsa art arda aynı hareket gelmez.
 
 `src/lib/reminderMachine.ts` saf, test edilebilir bir durum makinesidir: `idle`, `working`, `break_due`, `snoozed`, `paused`, `in_break`, `finished`.
 
@@ -83,7 +85,7 @@ Varsayılan medyalar, ikonlar ve yazı tipleri yereldir; çalışma sırasında 
 
 ## Hareket görselleri ve erişilebilirlik
 
-Parmak ve bakış hareketlerinde Workrave'in GPL v3 lisanslı gerçek poz kareleri sırayla oynatılır; akıcı video olarak tanıtılmaz. Kalan 10 hareket için eklem/uzuv hareketini gösteren özgün SVG/CSS animasyonları vardır. Animasyonların tamamı uygulama paketinde bulunur. Kaynak ve lisans ayrıntıları [MEDIA_SOURCES.md](MEDIA_SOURCES.md) dosyasındadır.
+Parmak ve bakış hareketlerinde Workrave'in GPL v3 lisanslı gerçek poz kareleri sırayla oynatılır; akıcı video olarak tanıtılmaz. Kalan 22 hareket için eklem/uzuv hareketini gösteren özgün SVG/CSS animasyonları vardır. Animasyonların tamamı uygulama paketinde bulunur. Kaynak ve lisans ayrıntıları [MEDIA_SOURCES.md](MEDIA_SOURCES.md) dosyasındadır.
 
 Her hareketin yazılı yönergesi ve gerektiğinde kısa dikkat notu bulunur. Sistem azaltılmış hareket tercihi, sabit gösterim ve yazılı yönergeye geçer. Gösterimi ayrıca duraklatabilir veya başa alabilirsin. Klavye odağı, ekran okuyucu adları, yerel modal odak yönetimi, açık/koyu tema ve dar ekran düzeni desteklenir.
 

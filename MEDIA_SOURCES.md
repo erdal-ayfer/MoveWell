@@ -31,6 +31,10 @@ Sandalye üzerinde kollarla yükselme, büyük kol çevirme, boyun hareketleri v
 
 Kısa yürüyüş, omuz yuvarlama, bilek hareketi, topuk kaldırma, kürek kemiklerini yaklaştırma, otur-kalk, göğüs açma, ağırlık aktarma, ayak bileği hareketi ve omuz esnetme için `src/components/ExerciseDemo.tsx` ile `src/styles.css` içinde özgün SVG/CSS gösterimleri hazırlanmıştır. Eklem grupları döndürülür, hareket yolları değiştirilir; yalnızca sabit resme dekoratif hareket verilmez. Bunlar da uygulamanın GPL v3 lisansıyla dağıtılır. Hareket aralığı ve tempo temsili gösterimlerdir.
 
+13 Ekim 2026'da `src/components/AdditionalMotion.tsx` ve `src/styles.css` ile 12 özgün gösterim daha eklenmiştir: omuz kaldırma, kolları öne uzatma, dirsek bükme, avuç çevirme, parmak uçlarına dokunma, bileği iki yana hareket ettirme, oturarak diz uzatma, oturarak diz kaldırma, oturarak topuk kaldırma, yana adım, topuğu geriye kaldırma ve yumuşak göz kırpma. Böylece katalog 22 özgün SVG/CSS gösterimi ve Workrave'den iki kareli gösterim içerir. Yeni çizimler dışarıdan alınmış medya içermez ve GPL v3 ile dağıtılır.
+
+Oturarak diz kaldırma/uzatma ve yana adım yönergeleri hazırlanırken [UHCW sandalye egzersizleri](https://www.uhcw.nhs.uk/download/clientfiles/files/Patient%20Information%20Leaflets/Clinical%20Support%20Services/Therapies/Physiotherapy/Chair%20exercises.pdf) ve [NHS denge hareketleri](https://www.nhs.uk/live-well/exercise/balance-exercises/) kaynakları incelenmiştir. Kaynakların görselleri kopyalanmamıştır; çizimler MoveWell'e aittir.
+
 Yazı tipi DM Sans, `@fontsource/dm-sans` paketinden yerel olarak yüklenir; SIL Open Font License metni `public/FONT-LICENSE.txt` içindedir. Lucide ikonları ISC lisanslıdır; metin `public/ICON-LICENSE.txt` içindedir.
 
 ## Yeniden dağıtım

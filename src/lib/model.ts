@@ -10,7 +10,10 @@ export const settingsSchema = z.object({
   breakMinutes: z.union([z.literal(2), z.literal(3), z.literal(5)]).default(3),
   sound: z.boolean().default(false),
   theme: z.enum(['light', 'dark', 'system']).default('system'),
-  excluded: z.array(id).max(11).default([]),
+  excluded: z
+    .array(id)
+    .max(exercises.length - 1)
+    .default([]),
   autoStart: z.boolean().default(false),
   onboardingDone: z.boolean().default(false),
 })

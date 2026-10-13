@@ -1,4 +1,4 @@
-export type Category = 'Ayakta' | 'Omuz ve sırt' | 'El ve bilek' | 'Göz molası'
+export type Category = 'Ayakta' | 'Oturarak' | 'Omuz ve sırt' | 'El ve bilek' | 'Göz molası'
 export type Exercise = {
   id: string
   titleTr: string
@@ -124,7 +124,7 @@ export const exercises: Exercise[] = [
     ],
     'Her iki ayağın yerde kalsın; hareket küçük ve rahat olsun.',
   ),
-  make('ankle', 'Ayak bileğini hareket ettir', 'Ayakta', [
+  make('ankle', 'Ayak bileğini hareket ettir', 'Oturarak', [
     'Oturarak bir topuğunu yere koy.',
     'Ayak ucunu yavaşça kendine çek, sonra ileri uzat. Diğer ayakla tekrarla.',
   ]),
@@ -137,6 +137,126 @@ export const exercises: Exercise[] = [
       'Diğer elinle üst koluna hafifçe destek ol. Rahatça bırakıp taraf değiştir.',
     ],
     'Dirsek eklemine bastırma; ağrılı bir germe yapma.',
+  ),
+  make(
+    'shrug',
+    'Omuzlarını kaldır ve bırak',
+    'Omuz ve sırt',
+    [
+      'Rahatça otur veya ayakta dur; kollarını yanlarında serbest bırak.',
+      'Omuzlarını hafifçe kulaklarına yaklaştır, ardından yavaşça indir.',
+    ],
+    'Başını sabit tut; omuzlarını zorlayarak kaldırma.',
+  ),
+  make(
+    'reach-forward',
+    'Kollarını öne uzat',
+    'Omuz ve sırt',
+    [
+      'Rahatça otur; ellerini göğüs hizasının biraz altında öne getir.',
+      'Kollarını yavaşça ileri uzat, sonra dirseklerini bükerek geri getir.',
+    ],
+    'Omuzlarını aşağıda tut; sırtını zorlayarak yuvarlama.',
+  ),
+  make(
+    'elbow-bend',
+    'Dirseklerini bük ve aç',
+    'Omuz ve sırt',
+    [
+      'Üst kollarını gövdenin yanında tut; ellerini gevşek bırak.',
+      'Dirseklerini yavaşça bükerek ellerini yukarı getir, ardından indir.',
+    ],
+    'Dirseklerini kilitlemeden, rahat hareket aralığında kal.',
+  ),
+  make(
+    'palm-turn',
+    'Avuçlarını çevir',
+    'El ve bilek',
+    [
+      'Dirseklerini bük; ön kollarını masa üzerinde destekle ve ellerini kenardan uzat.',
+      'Bileklerini düz tutarak avuçlarını yavaşça yukarı, sonra aşağı çevir.',
+    ],
+    'Ön kolundan döndür; hareketin sonuna ulaşmak için zorlama.',
+  ),
+  make(
+    'thumb-touch',
+    'Parmak uçlarına dokun',
+    'El ve bilek',
+    [
+      'Elini rahatça aç; parmaklarını gevşek tut.',
+      'Başparmağını sırayla diğer parmaklarının uçlarına hafifçe dokundur. Diğer elinle tekrarla.',
+    ],
+    'Parmak uçlarını birbirine bastırma.',
+  ),
+  make(
+    'wrist-side',
+    'Bileğini iki yana hareket ettir',
+    'El ve bilek',
+    [
+      'Ön kolunu masaya koy; avucun aşağı baksın ve elin masa kenarında serbest olsun.',
+      'Elini düz tutarak bileğinden yavaşça sağa ve sola hareket ettir. Taraf değiştir.',
+    ],
+    'Ön kolunu sabit tut; küçük bir hareket yeterli.',
+  ),
+  make(
+    'knee-extend',
+    'Oturarak dizini uzat',
+    'Oturarak',
+    [
+      'Kaymayan, tekerleksiz bir sandalyeye otur; ayaklarını yere koy.',
+      'Bir ayağını öne doğru kaldırarak dizini yavaşça uzat, sonra indir. Bacak değiştir.',
+    ],
+    'Dizini kilitleme; rahatça uzatabildiğin kadar hareket et.',
+  ),
+  make(
+    'seated-march',
+    'Oturarak dizlerini kaldır',
+    'Oturarak',
+    [
+      'Kaymayan, tekerleksiz bir sandalyede dik ve rahat otur.',
+      'Bir dizini hafifçe kaldırıp ayağını yere koy. Ardından diğer dizinle tekrarla.',
+    ],
+    'Gövdeni geriye yatırma; gerekirse sandalyenin yanlarından destek al.',
+  ),
+  make(
+    'seated-heel',
+    'Oturarak topuklarını kaldır',
+    'Oturarak',
+    [
+      'Sabit bir sandalyede otur; ayakların kalça genişliğinde yerde olsun.',
+      'Ayak uçların yerde kalırken topuklarını yavaşça kaldır, sonra indir.',
+    ],
+    'Ayaklarına elinle bastırma; rahat bir tempoda tekrarla.',
+  ),
+  make(
+    'side-step',
+    'Yana adım at',
+    'Ayakta',
+    [
+      'Yanında boş alan bırak; gerekirse sabit bir tezgâhtan destek al.',
+      'Bir ayağınla yana küçük bir adım at, diğerini yanına getir. Sonra ters yöne dön.',
+    ],
+    'Ayaklarını çaprazlama; yavaş hareket et ve dengeni koru.',
+  ),
+  make(
+    'leg-curl',
+    'Topuğunu geriye kaldır',
+    'Ayakta',
+    [
+      'Sabit bir masa veya tezgâhtan destek alarak ayakta dur.',
+      'Bir dizini büküp topuğunu hafifçe geriye kaldır, sonra indir. Diğer bacağınla tekrarla.',
+    ],
+    'Dizlerini yan yana tut; belini çukurlaştırma ve topuğunu zorlayarak çekme.',
+  ),
+  make(
+    'blink',
+    'Gözlerini yumuşakça kırp',
+    'Göz molası',
+    [
+      'Ekrandan bakışını ayır; yüzünü ve göz çevreni rahat bırak.',
+      'Gözlerini sıkmadan yavaşça kapatıp aç. Aralarda doğal biçimde göz kırp.',
+    ],
+    'Gözlerine bastırma veya gözlerini ovuşturma.',
   ),
 ]
 
@@ -155,4 +275,10 @@ for (const exercise of exercises) {
 }
 export const exerciseById = (id: string | undefined) =>
   exercises.find((e) => e.id === id) ?? exercises[0]
-export const categories: Category[] = ['Ayakta', 'Omuz ve sırt', 'El ve bilek', 'Göz molası']
+export const categories: Category[] = [
+  'Ayakta',
+  'Oturarak',
+  'Omuz ve sırt',
+  'El ve bilek',
+  'Göz molası',
+]

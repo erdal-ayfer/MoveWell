@@ -1044,6 +1044,243 @@ select {
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
 }
+.hand-outline,
+.palm-lines,
+.eye-outline {
+  fill: none;
+  stroke: var(--drawing);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 6;
+}
+.palm-lines {
+  stroke-width: 3;
+}
+.eye-fill {
+  fill: var(--drawing-bg);
+}
+.movement-blink .eyelid {
+  animation: soft-blink 4.8s ease-in-out infinite;
+}
+.movement-palm-turn .turning-palm {
+  transform-origin: 200px 212px;
+  animation: palm-turn 5s ease-in-out infinite;
+}
+.movement-wrist-side .sideways-hand {
+  transform-origin: 200px 212px;
+  animation: wrist-side 5s ease-in-out infinite;
+}
+.movement-thumb-touch .touching-thumb {
+  animation: thumb-touch 8s ease-in-out infinite;
+}
+.movement-shrug .shrugging-arms {
+  animation: gentle-shrug 4s ease-in-out infinite;
+}
+.movement-reach-forward .reaching-arm {
+  animation: reach-forward 5s ease-in-out infinite;
+}
+.movement-elbow-bend .bending-left {
+  transform-origin: 159px 157px;
+  animation: elbow-left 5s ease-in-out infinite;
+}
+.movement-elbow-bend .bending-right {
+  transform-origin: 241px 157px;
+  animation: elbow-right 5s ease-in-out infinite;
+}
+.movement-knee-extend .extending-knee {
+  transform-origin: 230px 185px;
+  animation: knee-extend 5s ease-in-out infinite;
+}
+.movement-seated-march .march-left {
+  animation: march-left 6s ease-in-out infinite;
+}
+.movement-seated-march .march-right {
+  animation: march-right 6s ease-in-out infinite;
+}
+.movement-seated-heel .seated-calf {
+  animation: seated-heel 4s ease-in-out infinite;
+}
+.movement-side-step .stepping-person {
+  animation: side-travel 6s ease-in-out infinite;
+}
+.movement-side-step .stepping-left {
+  animation: side-step-left 6s ease-in-out infinite;
+}
+.movement-side-step .stepping-right {
+  animation: side-step-right 6s ease-in-out infinite;
+}
+.movement-leg-curl .curling-calf {
+  transform-origin: 189px 229px;
+  animation: leg-curl 5s ease-in-out infinite;
+}
+@keyframes soft-blink {
+  0%,
+  15%,
+  70%,
+  100% {
+    transform: scaleY(1);
+  }
+  35%,
+  48% {
+    transform: scaleY(0.03);
+  }
+}
+@keyframes palm-turn {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+}
+@keyframes wrist-side {
+  0%,
+  100% {
+    transform: rotate(-14deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+@keyframes thumb-touch {
+  0%,
+  100% {
+    d: path('M158 207Q116 177 131 147');
+  }
+  18% {
+    d: path('M158 207Q129 150 155 103');
+  }
+  40% {
+    d: path('M158 207Q150 131 184 81');
+  }
+  62% {
+    d: path('M158 207Q177 127 212 90');
+  }
+  82% {
+    d: path('M158 207Q216 143 239 115');
+  }
+}
+@keyframes gentle-shrug {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  45%,
+  55% {
+    transform: translateY(-13px);
+  }
+}
+@keyframes reach-forward {
+  0%,
+  100% {
+    d: path('M156 109L186 150L227 140');
+  }
+  45%,
+  55% {
+    d: path('M156 109L215 123L277 129');
+  }
+}
+@keyframes elbow-left {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  45%,
+  55% {
+    transform: rotate(-130deg);
+  }
+}
+@keyframes elbow-right {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  45%,
+  55% {
+    transform: rotate(130deg);
+  }
+}
+@keyframes knee-extend {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  45%,
+  55% {
+    transform: rotate(-68deg);
+  }
+}
+@keyframes march-left {
+  0%,
+  45%,
+  100% {
+    d: path('M195 184L175 210L175 273L155 273');
+  }
+  22% {
+    d: path('M195 184L174 183L175 246L155 246');
+  }
+}
+@keyframes march-right {
+  0%,
+  50%,
+  100% {
+    d: path('M205 184L225 210L225 273L245 273');
+  }
+  75% {
+    d: path('M205 184L226 183L225 246L245 246');
+  }
+}
+@keyframes seated-heel {
+  0%,
+  100% {
+    d: path('M155 185H230V274L266 274');
+  }
+  45%,
+  55% {
+    d: path('M155 185H230V255L266 274');
+  }
+}
+@keyframes side-travel {
+  0%,
+  100% {
+    transform: translateX(-18px);
+  }
+  45%,
+  55% {
+    transform: translateX(18px);
+  }
+}
+@keyframes side-step-left {
+  0%,
+  50%,
+  100% {
+    d: path('M195 187L180 231L176 277H159');
+  }
+  72% {
+    d: path('M195 187L165 229L143 269H126');
+  }
+}
+@keyframes side-step-right {
+  0%,
+  50%,
+  100% {
+    d: path('M205 187L220 231L224 277H241');
+  }
+  22% {
+    d: path('M205 187L235 229L257 269H274');
+  }
+}
+@keyframes leg-curl {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  45%,
+  55% {
+    transform: rotate(65deg);
+  }
+}
 .movement-walk .left-leg {
   transform-origin: 195px 191px;
   animation: walk-left 2s ease-in-out infinite;

@@ -3,7 +3,7 @@ import { initialState, dayKey, stateSchema } from '../lib/model'
 import { transition as send, totalMs } from '../lib/reminderMachine'
 import { decode } from '../lib/storage'
 import { playlist } from '../lib/playlist'
-import { exercises } from '../data/exercises'
+import { exercises, categories } from '../data/exercises'
 import { reminderKey } from '../lib/notifications'
 
 const T = new Date(2026, 9, 12, 9, 0, 0).getTime()
@@ -181,9 +181,44 @@ describe('Storage and playlists', () => {
     expect(first.reduce((sum, step) => sum + step.targetMs, 0)).toBe(180000)
     expect(
       new Set(first.map((step) => exercises.find((e) => e.id === step.exerciseId)!.category)).size,
-    ).toBe(4)
+    ).toBe(categories.length)
     expect(playlist(settings, 1).map((s) => s.exerciseId)).not.toEqual(
       first.map((s) => s.exerciseId),
     )
+  })
+  it('keeps expanded exclusion preferences after reload, with one exercise enabled', () => {
+    const original = start()
+    original.settings.excluded = exercises.slice(1).map((e) => e.id)
+    const restored = decode(JSON.stringify(original), T)
+    expect(restored.recovered).toBe(false)
+    expect(restored.state.settings.excluded).toEqual(original.settings.excluded)
+    const steps = playlist(restored.state.settings, 0)
+    expect(steps).toHaveLength(6)
+    expect(steps.every((step) => step.exerciseId === exercises[0].id)).toBe(true)
+    expect(
+      stateSchema.safeParse({
+        ...original,
+        settings: { ...original.settings, excluded: exercises.map((e) => e.id) },
+      }).success,
+    ).toBe(false)
+  })
+  it('offers distinct exercises in a five-minute break and reaches the entire catalog', () => {
+    const settings = { ...initialState(T).settings, breakMinutes: 5 as const }
+    const offered = new Set<string>()
+    for (let rotation = 0; rotation < 100; rotation++) {
+      const steps = playlist(settings, rotation)
+      expect(steps).toHaveLength(10)
+      expect(new Set(steps.map((s) => s.exerciseId)).size).toBe(10)
+      for (const step of steps) offered.add(step.exerciseId)
+    }
+    expect(offered.size).toBe(exercises.length)
+  })
+  it('avoids immediate repeats when only two choices are enabled', () => {
+    const settings = initialState(T).settings
+    settings.excluded = exercises.slice(2).map((e) => e.id)
+    const steps = playlist(settings, 3)
+    for (let i = 1; i < steps.length; i++) {
+      expect(steps[i].exerciseId).not.toBe(steps[i - 1].exerciseId)
+    }
   })
 })

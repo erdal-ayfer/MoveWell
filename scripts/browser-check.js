@@ -61,7 +61,10 @@ async (page) => {
   const labels = await page
     .locator('.demo-preview')
     .evaluateAll((elements) => elements.map((e) => e.getAttribute('aria-label')))
-  assert(labels.length === 12, 'Missing exercise demos')
+  assert(labels.length === 24, 'Missing exercise demos')
+  await page.getByRole('button', { name: 'Oturarak', exact: true }).click()
+  assert(await page.locator('.demo-preview').count() === 4, 'Seated category is incomplete')
+  await page.getByRole('button', { name: 'Tümü', exact: true }).click()
   for (const label of labels) {
     await page.getByRole('button', { name: label, exact: true }).click()
     const dialog = page.getByRole('dialog')
@@ -117,6 +120,15 @@ async (page) => {
   )
   await page.keyboard.press('Escape')
   await page.emulateMedia({ reducedMotion: 'no-preference' })
+  const choices = page.locator('.library-grid input[type="checkbox"]')
+  for (let i = 1; i < labels.length; i++) await choices.nth(i).uncheck()
+  assert(await choices.nth(0).isDisabled(), 'Last exercise can be excluded')
+  assert((await read()).settings.excluded.length === 23, 'Expanded exclusions not saved')
+  await page.reload()
+  await page.getByRole('button', { name: 'Hareketler', exact: true }).click()
+  assert((await read()).settings.excluded.length === 23, 'Reload lost expanded exclusions')
+  assert(await choices.nth(0).isDisabled(), 'Last-exercise guard lost after reload')
+  for (let i = 1; i < labels.length; i++) await choices.nth(i).check()
   await page.setViewportSize({ width: 390, height: 844 })
   assert(
     await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
@@ -128,6 +140,7 @@ async (page) => {
     partialAndComplete: 'passed',
     reload: 'passed',
     animatedDemos: labels.length,
+    categoriesAndExclusions: 'passed',
     reducedMotion: 'passed',
     mobile: 'passed',
   }
